@@ -1,0 +1,29 @@
+<%-- 
+    Document   : 215066263
+    Created on : Sep 17, 2018, 7:44:10 PM
+    Author     : Student
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<%@page import="javax.*" %>
+<!DOCTYPE html>
+<html>
+    <head>     
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/timetable", "root","");
+            Statement stmt = conn.createStatement(); 
+             String sql = "SELECT * FROM login";
+             ResultSet rs = stmt.executeQuery(sql);
+             conn.close();
+            %>
+            
+            <h1>MOLEFE</h1>
+        <h1>Hello World!</h1>
+    </body>
+</html>
