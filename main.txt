@@ -22,6 +22,8 @@
              ResultSet rs = stmt.executeQuery(sql);
              conn.close();
             %>
+
+ 		<h2>Ngema</h2>
             
             <h1>MOLEFE</h1>
         <h1>Hello World!</h1>
