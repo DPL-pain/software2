@@ -10,22 +10,112 @@
 <!DOCTYPE html>
 <html>
     <head>     
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-
+PWC6199: Generated servlet error:
+target value 1.5 is obsolete and will be removed in a future release
+PWC6199: Generated servlet error:
+equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+            <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+  
     </head>
     <body>
-        <%
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/timetable", "root","");
-            Statement stmt = conn.createStatement(); 
-             String sql = "SELECT * FROM login";
-             ResultSet rs = stmt.executeQuery(sql);
-             conn.close();
-            %>
+        <%   
+   try{
+       String DB_URL = "jdbc:mysql://localhost/software2";
+       Connection conn = null;
+       Statement stmt = null;
+       String USER = "root";
+       String PASS = "";
+      //STEP 2: Register JDBC driver
+      Class.forName("com.mysql.jdbc.Driver");
 
- 		<h2>Ngema</h2>
-            <h1>MOLEFE</h1>
-		<h2> Push </h2>
-        <h1>Hello World!</h1>
+      //STEP 3: Open a connection
+      out.println("Connecting to database...");
+      conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+      //STEP 4: Execute a query
+      out.println("Creating statement...");
+      stmt = conn.createStatement();
+      String sql;
+      sql = "SELECT * FROM person";
+      ResultSet rs = stmt.executeQuery(sql);
+%>
+
+  <div class="table-responsive">
+      <table class="table table-hover">
+          <thead>
+              <tr>
+              <th>ID</th>
+               <th>name</th>
+               <th> password</th>
+               <th>Last</th>
+               </tr>
+          </thead>
+          <tbody>
+          
+<%
+      //STEP 5: Extract data from result set
+      while(rs.next()){
+         //Retrieve by column name
+         String id  = rs.getString("id");
+         String name = rs.getString("name");
+         String password = rs.getString("password");
+         String status = rs.getString("status");
+
+      %>
+    
+          <tr>
+              <td><%  out.print(id); %> </td>
+              <td><% out.print(name);%> </td>
+              <td><% out.print(password);%> </td>
+              <td><% out.print(status);%>  </td>
+              <td> </td>
+          </tr>
+          <%
+              }%>
+        
+          </tbody>
+          
+      </table>
+              
+   </div>           
+              
+      
+      <%
+      //STEP 6: Clean-up environment
+      rs.close();
+      stmt.close();
+      conn.close();
+   }catch(SQLException se){
+      //Handle errors for JDBC
+      se.printStackTrace();
+   }catch(Exception e){
+      //Handle errors for Class.forName
+      e.printStackTrace();
+   }
+//end main
+//end FirstExample                 
+  %>
+           
+       <  
+   
     </body>
+    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </html>
