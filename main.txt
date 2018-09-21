@@ -105,8 +105,23 @@ equiv="Content-Type" content="text/html; charset=UTF-8">
 //end FirstExample                 
   %>
            
-       <  
-   
+  <form method="POST" action="" class="form-group">
+      <div>
+          <label>Username</label>
+          <input type="text" placeholder="enter username">
+          
+      </div>
+      <br>
+       <div>
+          <label>Password</label>
+          <input type="text" placeholder="code">
+          
+          
+      </div>
+      <br>
+      <input type="submit" value="login">
+  </form>
+ 
     </body>
     
     <!-- Latest compiled and minified CSS -->
